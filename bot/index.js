@@ -8,7 +8,8 @@ const session = new Map();
 const start = () => {
     bot.setMyCommands([
         {command: '/start', description: 'Start command'},
-        {command: '/chain', description: 'Start test chain'}
+        {command: '/chain', description: 'Start test chain'},
+        {command: '/webapp', description: 'Open webappp'}
     ]);
     
     bot.on('text', async msg => {
@@ -39,6 +40,23 @@ const start = () => {
             } else if(msg.text === '/chain') {
                 session.set(msg.from.id, {sess: 1, data: []});
                 await bot.sendMessage(chatId, 'Send first number');
+            } else if(msg.text === '/webapp') {
+                const markup = JSON.stringify({
+                    keyboard: [
+                        [{text: 'Open webapp', web_app: {
+                            url: 'https://telegram-web-app.web.app'
+                        }}]
+                    ]
+                });
+                // const markup = JSON.stringify({
+                //     inline_keyboard: [
+                //         [{text: 'Open webapp', web_app: {
+                //             url: 'https://telegram-web-app.web.app'
+                //         }}]
+                //     ]
+                // });
+                
+                await bot.sendMessage(chatId, 'Select: ', {reply_markup: markup});
             } else {
                 await bot.sendMessage(chatId, 'Didn\'t understand');
             }
