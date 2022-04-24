@@ -3,3 +3,42 @@
   position: relative;
   padding: 30px;
 }
+
+.inputBox {
+  margin-top: 40px;
+}
+
+input[type='text'] {
+  background-color: transparent;
+  border: 3px solid yellow;
+  border-radius: 10px;
+  padding: 5px;
+  font-size: 20px;
+  margin-right: 10px;
+  color: white;
+  font-weight: bold;
+}
+
+.buttons {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+button {
+  background-color: transparent;
+  border: 3px solid yellow;
+  border-radius: 10px;
+  padding: 5px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: 10px;
+  transition: .2s all;
+}
+button:hover {
+  background-color: yellow;
+  color: black;
+  cursor: pointer;
+}

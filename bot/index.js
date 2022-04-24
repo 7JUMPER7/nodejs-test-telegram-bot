@@ -11,11 +11,18 @@ const start = () => {
         {command: '/chain', description: 'Start test chain'},
         {command: '/webapp', description: 'Open webappp'}
     ]);
+
+    bot.on('message', async msg => {
+        console.log(msg.from.username, msg.chat.id);
+        if(msg.web_app_data) {
+            console.log(msg.web_app_data.data);
+            await bot.sendMessage(msg.chat.id, 'Got data:\n<b>' + msg.web_app_data.data + '</b>', {parse_mode: 'HTML'});
+        }
+    });
     
     bot.on('text', async msg => {
         const chatId = msg.chat.id;
         const info = session.get(msg.from.id);
-        console.log(info);
         
         if(info) {
             const {sess, data} = info;
@@ -92,5 +99,7 @@ const start = () => {
         const file = await bot.downloadFile(fileInfo.file_id, './voice');
     });
 }
+
+bot.sendMessage(510126271, 'Ку, Саша, ты лох :)))');
 
 start();
